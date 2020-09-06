@@ -1,0 +1,81 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+.app-container{
+  width: 500px;
+  margin: 10px auto;
+  font-size: 14px;
+  background-color: #fff;
+  border: 1px solid #f1f1f1;
+  padding: 20px;
+}
+.comment-input{
+  background-color: #fff;
+  border: 1px solid #f1f1f1;
+  padding: 20px;
+  margin-bottom: 10px;
+}
+.comment-input input{
+  margin-left: 18px;
+  width: 80%;
+}
+.comment-input input,
+.comment-input textarea {
+  border: 1px solid #e6e6e6;
+  border-radius: 3px;
+  padding: 5px;
+  font-size: 14px;
+  resize: none;
+  outline:none
+}
+.comment-content{
+  margin-top:20px;
+display: flex;
+justify-content: center;
+}
+.comment-content span{
+margin:30px 2px 30px 0px;
+}
+.comment-content textarea{
+  height: 100px;
+  width: 80%;
+}
+.comment-submit{
+margin-top:20px;
+display: flex;
+justify-content: flex-end;
+}
+.comment-submit button{
+  height: 26px;
+  background-color: #00a3cf;
+  border: 0px;
+  outline: none;
+  border-radius: 3px;
+  width: 68px;
+  font-size: 14px;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+}
+.comment-submit button:active{
+  background-color:#13c1f1;
+}
+.comment-show{
+  border: 1px solid #e6e6e6;
+  width:100%;
+  height: 32px;
+}
+.comment-show-username{
+  color: #00a3cf;
+  margin-right: 8px;
+}
