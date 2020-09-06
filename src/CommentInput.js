@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 class CommentInput extends Component{
     static propTypes={
-        onSubmit:PropTypes.func
+        onSubmit:PropTypes.func,
     }
 
     constructor(){

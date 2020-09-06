@@ -9,6 +9,7 @@ class CommentApp extends Component {
             comments:[]
         }
     }
+
     handleSubmit(comment) {
        /*  let comments=[]
         comments.push(comment) */
@@ -17,11 +18,16 @@ class CommentApp extends Component {
           comments: this.state.comments
         })
     }
+    handleDeleteComment(index){
+      this.setState({
+        comments:this.state.comments.splice(index,1)
+      })
+    }
     render() {
     return (
       <div className='app-container'>
         <CommentInput onSubmit={this.handleSubmit.bind(this)}/>
-        <CommentList comments={this.state.comments} />
+        <CommentList comments={this.state.comments} onDeleteComment={this.handleDeleteComment.bind(this)}/>
       </div>
     )
   }
