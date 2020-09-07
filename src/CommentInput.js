@@ -14,12 +14,29 @@ class CommentInput extends Component{
         }
     }
 
-    componentWillMount(){
-        this._saveUsername()
+    UNSAFE_componentWillMount(){
+        this._loadUsername()
+    }
+
+    componentDidMount(){
+        this.textarea.focus()
+    }
+    
+    _loadUsername(){
+        let username=localStorage.getItem('username')
+        if(username){
+            this.setState({
+                username
+            })
+        }
     }
 
     _saveUsername(username){
-        localStorage.getItem('username',username)
+        localStorage.setItem('username',username)
+    }
+
+    handleUsernameBlur(e){
+        this._saveUsername(e.target.value)
     }
 
     handleUsernameChange(e){
@@ -47,11 +64,11 @@ class CommentInput extends Component{
         return(<div className='comment-input'>
             <div className='comment-username'>
                 <span>用户名：</span>
-                <input placeholder='请输入用户名' value={this.state.username} onChange={this.handleUsernameChange.bind(this)}/>
+                <input placeholder='请输入用户名' value={this.state.username} onChange={this.handleUsernameChange.bind(this)} onBlur={this.handleUsernameBlur.bind(this)}/>
             </div>
             <div className='comment-content'>
                 <span>评论内容：</span>
-                <textarea value={this.state.content} onChange={this.handleContentChange.bind(this)}/>
+                <textarea value={this.state.content} onChange={this.handleContentChange.bind(this)} ref={(textarea)=>this.textarea=textarea}/>
             </div>
             <div className='comment-submit'>
                 <button onClick={this.handleSubmit.bind(this)}>发布</button>

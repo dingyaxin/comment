@@ -10,18 +10,40 @@ class CommentApp extends Component {
         }
     }
 
-    handleSubmit(comment) {
-       /*  let comments=[]
-        comments.push(comment) */
-        this.state.comments.push(comment)
+    UNSAFE_componentWillMount(){
+      this._loadComments()
+    }
+
+    _loadComments(){
+      let comments=localStorage.getItem('comments')
+      if(comments){
+        comments=JSON.parse(comments)
+        console.log(comments)
         this.setState({
-          comments: this.state.comments
+          comments:comments
         })
+      }
+    }
+    _saveComments(comments){
+      localStorage.setItem('comments',JSON.stringify(comments))
+    }
+
+    handleSubmit(comment) {
+      let comments=this.state.comments
+        comments.push(comment)
+        this.setState({
+          comments: comments
+        })
+        this._saveComments(comments)
     }
     handleDeleteComment(index){
+      console.log(index);
+      let comments=this.state.comments
+      comments.splice(index,1)
       this.setState({
-        comments:this.state.comments.splice(index,1)
+        comments:comments
       })
+      this._saveComments(comments)
     }
     render() {
     return (

@@ -3,13 +3,13 @@ import PropTypes from 'prop-types'
 
 class Comment extends Component{
     static propTypes={
-        comment:PropTypes.array,
+        comment:PropTypes.object,
        
     }
 
-    handleDeleteComment(index){
+    handleDeleteComment(){
         if(this.props.onDeleteComment){
-            this.props.onDeleteComment(index)
+            this.props.onDeleteComment(this.props.index)
         }
     }
 
