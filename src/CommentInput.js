@@ -1,42 +1,28 @@
 import React,{Component} from 'react'
 import PropTypes from 'prop-types'
+import wrapWithLoadData from './wrapWithLoadData'
 
 class CommentInput extends Component{
     static propTypes={
         onSubmit:PropTypes.func,
+        data: PropTypes.any,
+        onSaveData: PropTypes.func.isRequired
     }
 
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
         this.state={
-            username:'',
+            username:props.data,
             content:''
         }
-    }
-
-    UNSAFE_componentWillMount(){
-        this._loadUsername()
     }
 
     componentDidMount(){
         this.textarea.focus()
     }
-    
-    _loadUsername(){
-        let username=localStorage.getItem('username')
-        if(username){
-            this.setState({
-                username
-            })
-        }
-    }
-
-    _saveUsername(username){
-        localStorage.setItem('username',username)
-    }
 
     handleUsernameBlur(e){
-        this._saveUsername(e.target.value)
+        this.props.onSaveData(e.target.value)
     }
 
     handleUsernameChange(e){
@@ -76,4 +62,5 @@ class CommentInput extends Component{
         </div>)
     }
 }
+CommentInput=wrapWithLoadData(CommentInput,'username')
 export default CommentInput
